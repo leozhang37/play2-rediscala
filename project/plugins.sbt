@@ -8,3 +8,5 @@ resolvers ++= Seq(
 )
 
 addSbtPlugin("com.jsuereth" % "xsbt-gpg-plugin" % "0.6")
+
+addSbtPlugin("com.github.theon" %% "xsbt-coveralls-plugin" % "0.0.3")
