@@ -7,8 +7,8 @@ object BuildSettings {
   val buildSettings = Defaults.defaultSettings ++ Seq(
     organization := "fr.njin",
     version := buildVersion,
-    scalaVersion := "2.10.0",
-    crossScalaVersions := Seq("2.10.0"),
+    scalaVersion := "2.10.2",
+    crossScalaVersions := Seq("2.10.2"),
     crossVersion := CrossVersion.binary
   ) ++ Publish.settings ++
     ScctPlugin.instrumentSettings ++
