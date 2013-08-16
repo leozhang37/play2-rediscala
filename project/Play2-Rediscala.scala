@@ -57,7 +57,8 @@ object RediscalaBuild extends Build {
         "Sonatype" at "http://oss.sonatype.org/content/groups/public/",
         //"Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
         "Typesafe repository releases" at "http://repo.typesafe.com/typesafe/releases/",
-        "rediscala" at "https://github.com/etaty/rediscala-mvn/raw/master/releases/"
+        "rediscala" at "https://github.com/etaty/rediscala-mvn/raw/master/releases/",
+        "scct-github-repository" at "http://mtkopone.github.com/scct/maven-repo"
       ),
       libraryDependencies ++= Seq(
         "com.etaty.rediscala" %% "rediscala" % "1.0" cross CrossVersion.binary,
