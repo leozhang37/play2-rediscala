@@ -10,7 +10,9 @@ object BuildSettings {
     scalaVersion := "2.10.0",
     crossScalaVersions := Seq("2.10.0"),
     crossVersion := CrossVersion.binary
-  ) ++ Publish.settings
+  ) ++ Publish.settings ++
+    ScctPlugin.instrumentSettings ++
+    com.github.theon.coveralls.CoverallsPlugin.coverallsSettings
 }
 
 object Publish {
