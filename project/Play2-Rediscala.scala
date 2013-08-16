@@ -63,7 +63,9 @@ object RediscalaBuild extends Build {
         "com.etaty.rediscala" %% "rediscala" % "1.0" cross CrossVersion.binary,
         "play" %% "play" % "2.1.0" cross CrossVersion.binary,
         "play" %% "play-test" % "2.1.0" % "test" cross CrossVersion.binary,
-        "org.specs2" %% "specs2" % "2.1.1" % "test" cross CrossVersion.binary
+        "org.specs2" %% "specs2" % "2.1.1" % "test" cross CrossVersion.binary,
+        //https://github.com/mtkopone/scct/issues/54
+        "reaktor" %% "scct" % "0.2-SNAPSHOT" % "test"
       )
     )
   )
