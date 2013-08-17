@@ -42,7 +42,15 @@ object Publish {
           <id>dbathily</id>
           <name>Didier Bathily</name>
         </developer>
-      </developers>)
+      </developers>),
+    credentials += {
+      Seq("build.publish.user", "build.publish.password").map(k => Option(System.getProperty(k))) match {
+        case Seq(Some(user), Some(pass)) =>
+          Credentials("Sonatype Nexus Repository Manager", "oss.sonatype.org", user, pass)
+        case _                           =>
+          Credentials(Path.userHome / ".ivy2" / ".credentials")
+      }
+    }
   )
 }
 
