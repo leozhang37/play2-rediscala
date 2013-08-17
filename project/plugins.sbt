@@ -2,12 +2,7 @@ resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositori
 
 addSbtPlugin("com.github.mpeltonen" % "sbt-idea" % "1.3.0-SNAPSHOT")
 
-resolvers ++= Seq(
-  Resolver.url("sbt-plugin-releases2", new URL("http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns),
-  "coda" at "http://repo.codahale.com"
-)
-
-addSbtPlugin("com.jsuereth" % "xsbt-gpg-plugin" % "0.6")
+addSbtPlugin("com.typesafe.sbt" % "sbt-pgp" % "0.8")
 
 resolvers += "scct-github-repository" at "http://mtkopone.github.com/scct/maven-repo"
 
