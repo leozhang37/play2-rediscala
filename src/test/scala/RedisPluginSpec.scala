@@ -57,6 +57,7 @@ class RedisPluginSpec extends Specification {
     "Should provide RedisClient for default configuration" in {
       val app = FakeApplication(additionalPlugins = Seq("play.modules.rediscala.RedisPlugin"))
       val client = RedisPlugin.client()(app, Akka.system(app))
+      client.disconnect()
       (client.host, client.port) must be equalTo ("localhost", 6379)
     }
     "Throw an exception if plugin is not registered" in {
@@ -72,8 +73,10 @@ class RedisPluginSpec extends Specification {
         )
       )
       val default = RedisPlugin.client()(app, Akka.system(app))
+      default.disconnect()
       (default.host, default.port) must be equalTo ("localhost", 6379)
       val mydb = RedisPlugin.client("mydb")(app, Akka.system(app))
+      mydb.disconnect()
       (mydb.host, mydb.port) must be equalTo ("an.host.com", 9092)
     }
     "Throw a an exception if database is not configured" in {
