@@ -1,16 +1,12 @@
 language: scala
-script: sbt "test"
+script: sbt ++$TRAVIS_SCALA_VERSION "test"
 after_script:
 - sbt coveralls
+- if [[ $TRAVIS_TEST_RESULT = 0 && $TRAVIS_BRANCH == "master" ]]; then sbt -Dbuild.publish.user="${SONATYPE_USER}" -Dbuild.publish.password="${SONATYPE_PASS}" ++$TRAVIS_SCALA_VERSION "publish-signed" fi
 scala:
 - 2.10.2
 jdk:
 - oraclejdk7
-matrix:
-  include:
-  - branch: master
-    after_script: 
-    - sbt -Dbuild.publish.user="${SONATYPE_USER}" -Dbuild.publish.password="${SONATYPE_PASS}" "publish-signed"
 services:
 - redis
 env:
