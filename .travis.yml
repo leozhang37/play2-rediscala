@@ -9,7 +9,8 @@ jdk:
 matrix:
   include:
   - branch: master
-    after_script: sbt -Dbuild.publish.user=${SONATYPE_USER} -Dbuild.publish.password=${SONATYPE_PASS} ++$TRAVIS_SCALA_VERSION "publish-signed"
+    after_script: 
+    - sbt -Dbuild.publish.user="${SONATYPE_USER}" -Dbuild.publish.password="${SONATYPE_PASS}" ++$TRAVIS_SCALA_VERSION "publish-signed"
 services:
 - redis
 env:
