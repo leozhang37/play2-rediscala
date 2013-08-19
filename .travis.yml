@@ -6,13 +6,10 @@ scala:
 - 2.10.2
 jdk:
 - oraclejdk7
-- openjdk7
 matrix:
   include:
   - branch: master
-    jdk: oraclejdk7
-    after_script: sbt -Dbuild.publish.user=${SONATYPE_USER} -Dbuild.publish.password=${SONATYPE_PASS}
-      ++$TRAVIS_SCALA_VERSION publish-signed
+    after_script: sbt -Dbuild.publish.user=${SONATYPE_USER} -Dbuild.publish.password=${SONATYPE_PASS} ++$TRAVIS_SCALA_VERSION "publish-signed"
 services:
 - redis
 env:
