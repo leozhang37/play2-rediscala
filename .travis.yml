@@ -1,5 +1,5 @@
 language: scala
-script: sbt ++$TRAVIS_SCALA_VERSION "test"
+script: sbt "test"
 after_script:
 - sbt coveralls
 scala:
@@ -10,7 +10,7 @@ matrix:
   include:
   - branch: master
     after_script: 
-    - sbt -Dbuild.publish.user="${SONATYPE_USER}" -Dbuild.publish.password="${SONATYPE_PASS}" ++$TRAVIS_SCALA_VERSION "publish-signed"
+    - sbt -Dbuild.publish.user="${SONATYPE_USER}" -Dbuild.publish.password="${SONATYPE_PASS}" "publish-signed"
 services:
 - redis
 env:
