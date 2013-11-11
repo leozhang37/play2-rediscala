@@ -2,7 +2,7 @@ import sbt._
 import sbt.Keys._
 
 object BuildSettings {
-  val buildVersion = "1.0.0"
+  val buildVersion = "1.0.1"
 
   val buildSettings = Defaults.defaultSettings ++ Seq(
     organization := "fr.njin",
@@ -12,7 +12,7 @@ object BuildSettings {
     crossVersion := CrossVersion.binary
   ) ++ Publish.settings ++
     ScctPlugin.instrumentSettings ++
-    com.github.theon.coveralls.CoverallsPlugin.coverallsSettings
+    CoverallsPlugin.coverallsSettings
 }
 
 object Publish {
@@ -57,7 +57,7 @@ object Publish {
 object RediscalaBuild extends Build {
   import BuildSettings._
 
-  lazy val reactivemongo = Project(
+  lazy val play2Rediscala = Project(
     "Play2-Rediscala",
     file("."),
     settings = buildSettings ++ Seq(
@@ -69,12 +69,10 @@ object RediscalaBuild extends Build {
         "scct-github-repository" at "http://mtkopone.github.com/scct/maven-repo"
       ),
       libraryDependencies ++= Seq(
-        "com.etaty.rediscala" %% "rediscala" % "1.0" cross CrossVersion.binary,
+        "com.etaty.rediscala" %% "rediscala" % "1.3" cross CrossVersion.binary,
         "play" %% "play" % "2.1.0" cross CrossVersion.binary,
         "play" %% "play-test" % "2.1.0" % "test" cross CrossVersion.binary,
-        "org.specs2" %% "specs2" % "2.1.1" % "test" cross CrossVersion.binary,
-        //https://github.com/mtkopone/scct/issues/54
-        "reaktor" %% "scct" % "0.2-SNAPSHOT" % "test"
+        "org.specs2" %% "specs2" % "2.1.1" % "test" cross CrossVersion.binary
       )
     )
   )

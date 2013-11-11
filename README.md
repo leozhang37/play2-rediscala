@@ -47,7 +47,6 @@ redis {
 	mydb {
 		host: localhost
 		port: 6379
-		user: ...
 		password: ...
 	}
 	...
@@ -58,9 +57,3 @@ redis {
 RedisPlugin.client() //Give you the default database client
 RedisPlugin.client("mydb") //Give you 'mydb' database client
 ```
-
-> Please Notice
-> 
-> Authentication is not handle by the plugin (yet?) so user and password key are useless for now
-
-

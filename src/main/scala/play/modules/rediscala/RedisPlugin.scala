@@ -20,16 +20,10 @@ class RedisPlugin(app: Application) extends Plugin {
   }
 
   def client(db:String)(implicit system:ActorSystem):RedisClient = confs.get(db) match {
-    case Some(conf) => new RedisClient(conf._1, conf._2)
+    case Some(conf) => new RedisClient(conf._1, conf._2, conf._3.map(_._2))
     case _ => throw new PlayException("RedisPlugin Error", s"No configuration found for db $db")
   }
-
-  /*
-  TODO Support authentication. I don't know what to do with authentication.
-  Should I give a client which is already authenticated if the auth configuration exist or just expose a getAuth method,
-  developers will take care of authentication
-   */
-
+  
 }
 
 object RedisPlugin {
